@@ -1,0 +1,17 @@
+--Student Name: ZeAi Sun
+
+select a.au_id as [Author ID],
+	a.au_lname + ', ' + a.au_fname as [Author Name],
+	st.stor_name as [Store Name],
+	t.title as [Title],
+	s.ord_date as [Order Date],
+	s.qty as [Qty Sold]
+from authors a left join titleauthor ta
+	on a.au_id = ta.au_id
+	left join titles t
+	on ta.title_id = t.title_id
+	left join sales s
+	on t.title_id = s.title_id
+	left join stores st
+	on st.stor_id = s.stor_id
+order by [Qty Sold] desc
